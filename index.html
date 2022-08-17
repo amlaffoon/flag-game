@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flags</title>
+</head>
+
+<body>
+    <main>
+        <div>
+            <p>
+                Identify whether or not the emoji is a flag. If you guess all of them correctly, you win!
+            </p>
+        </div>
+        <div>
+            <!--display emojis here-->
+            <figure id="emojifig">
+
+            </figure>
+        </div>
+        <div>
+            <h1>
+                Is this emoji a flag?
+            </h1>
+        </div>
+        <div>
+            <section>
+                <button id="ybtn" onclick="handleAnswer(true)">
+                    Yes
+                </button>
+                <button id="nbtn" onclick="handleAnswer(false)">
+                    No
+                </button>
+            </section>
+        </div>
+        <div>
+            <p id="score"></p>
+            <p id="answers">
+
+            </p>
+        </div>
+    </main>
+    <script type="module" src="./game.js"></script>
+</body>
+
+</html>
