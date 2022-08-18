@@ -11,8 +11,17 @@ let remainingEmojis = data.map(obj => {
 shuffleArray(remainingEmojis);
 
 let correctAnswers = []
-let highScore = 0;
+let highScore;
 let currentEmoji;
+let remainingSeconds = 60;
+let timer;
+
+if ("highScore" in localStorage) {
+    highScore = Number(localStorage.getItem("highScore"))
+} else {
+    highScore = 0;
+    localStorage.setItem("highScore", 0);
+}
 
 displayNextEmoji()
 
@@ -53,20 +62,37 @@ function resetRemainingEmojis() {
 function handleAnswer(isFlag) {
     let currentEmojiIsFlag = currentEmoji.category === "Flags";
 
+    if (!timer) {
+        timer = setInterval(updateTimer, 1000);
+    }
+
     if (isFlag === currentEmojiIsFlag) {
         correctAnswers.push(currentEmoji);
 
         if (correctAnswers.length > highScore) {
             highScore = correctAnswers.length;
+            localStorage.setItem("highScore", highScore);
         }
 
         displayNextEmoji()
     } else {
-        resetRemainingEmojis();
-        correctAnswers = [];
-        displayNextEmoji();
-        alert("You lose! Sorry")
+        playerLoses("You lose. Try again!")
     }
+}
+
+function playerLoses(msg) {
+    resetRemainingEmojis();
+    correctAnswers = [];
+    displayNextEmoji();
+    resetTimer();
+    document.getElementById("timer").innerHTML = `Time remaining: ${remainingSeconds}`
+    alert(msg)
+}
+
+function resetTimer() {
+    clearInterval(timer);
+    timer = null;
+    remainingSeconds = 60;
 }
 
 document.addEventListener("keydown", (event) => {
@@ -76,5 +102,14 @@ document.addEventListener("keydown", (event) => {
         handleAnswer(false)
     }
 });
+
+function updateTimer() {
+    console.log(remainingSeconds);
+    remainingSeconds--
+    document.getElementById("timer").innerHTML = `Time remaining: ${remainingSeconds}`
+    if (remainingSeconds <= 0) {
+        playerLoses("You ran out of time!")
+    }
+}
 
 window.handleAnswer = handleAnswer;
