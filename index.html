@@ -5,42 +5,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Flags</title>
 </head>
 
 <body>
-    <main>
-        <div>
+    <main class="main">
+        <div class="box">
             <p>
-                Identify whether or not the emoji is a flag. If you guess all of them correctly, you win!
+                Identify whether or not the emoji is a flag. If you guess all of them correctly, you win! You can use
+                <kbd>Y</kbd> or <kbd>N</kbd> keys to answer.
             </p>
         </div>
-        <div>
-            <!--display emojis here-->
-            <figure id="emojifig">
 
-            </figure>
-        </div>
-        <div>
-            <h1>
-                Is this emoji a flag?
-            </h1>
-        </div>
-        <div>
-            <section>
-                <button id="ybtn" onclick="handleAnswer(true)">
+        <div class="box">
+
+            <div class="gametitle">
+                <h1 class="title">
+                    Is this emoji a flag?
+                </h1>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image" id="emojifig"></figure>
+                </div>
+            </div>
+
+
+            <section class="buttons">
+                <button class="button is-success is-light is-medium is-responsive" id="ybtn"
+                    onclick="handleAnswer(true)">
                     Yes
                 </button>
-                <button id="nbtn" onclick="handleAnswer(false)">
+                <button class="button is-danger is-light is-medium is-responsive" id="nbtn"
+                    onclick="handleAnswer(false)">
                     No
                 </button>
             </section>
-        </div>
-        <div>
-            <p id="score"></p>
-            <p id="answers">
 
-            </p>
+        </div>
+
+        <div class="scores box">
+            <p id="score"></p>
+        </div>
+
+        <div class="box answers">
+            <p>Correct Answers:</p>
+            <p id="answers"></p>
         </div>
     </main>
     <script type="module" src="./game.js"></script>
