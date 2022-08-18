@@ -5,3 +5,5 @@ Identify whether or not the emoji displayed on the screen is a flag. If you get 
 If you get the answer wrong, your score will clear and you'll have to start over. Hurry before you run out of time!
 
 Emojis from [github/gemoji repo](https://github.com/github/gemoji).
+
+https://amlaffoon.github.io/flag-game/
