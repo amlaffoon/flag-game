@@ -7,3 +7,6 @@ If you get the answer wrong, your score will clear and you'll have to start over
 Emojis from [github/gemoji repo](https://github.com/github/gemoji).
 
 https://amlaffoon.github.io/flag-game/
+
+### To do:
+-Some emojis aren't visible in all browsers. Add alternate images or find another workaround.
